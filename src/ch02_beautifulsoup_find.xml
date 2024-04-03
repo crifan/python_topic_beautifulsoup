@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding="utf-8"?>
+
+<!DOCTYPE chapter
+[
+
+<!ENTITY % crl_ent PUBLIC "crl.ent" 'http://www.crifan.com/files/res/docbook/entity/crl.ent'>
+%crl_ent;
+
+]>
+
+<chapter
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xl="http://www.w3.org/1999/xlink"
+    
+    xml:id="ch02_beautifulsoup_find">
+<title>BeautifulSoup中的find函数详解</title>
+<abstract></abstract>
+
+<sect1 xml:id="beautifulsoup_find_re_para"><title>BeautifulSoup中使用find，findAll等函数时，除了字符串外，也可以用正则表达式作为参数</title>
+    <para>在使用Beautifulsoup的find/finaAll等函数时候，常见用法都是传递字符串本身，比如：</para>
+    <programlisting language="python">
+foundIncontentTitle = lastItem.find(attrs={"class":"a-incontent a-title"});
+    </programlisting>
+    <para>可以找到：</para>
+    <screen>
+<![CDATA[
+<a href="/serial_story/item/7d86d17b537d643c70442326" class="a-incontent a-title" target=_blank>I/O-Programming_HOWTO(上)zz</a>
+]]>
+    </screen>
+    <para>中的值。</para>
+    <para>但是却无法匹配：</para>
+    <screen>
+<![CDATA[
+<a href="/serial_story/item/0c450a1440b768088fbde426" class="a-incontent a-title cs-contentblock-hoverlink" target="_blank">为什么幸运的人总幸运倒霉的人老倒霉-1   斯宾塞·约翰逊著</a>
+]]>
+    </screen>
+    <para>即，class的值是：a-incontent a-title cs-contentblock-hoverlink，而不仅仅是a-incontent a-title</para>
+    <para>此时，如果想要匹配才class，使用传统的方法，则需要写两个find去匹配，而后来得知，原来find/findAll等函数的参数中，也可以使用正则表达式的，所以就用了：</para>
+    <programlisting language="python">
+titleP = re.compile("a-incontent a-title(\s+?\w+)?");# also match a-incontent a-title cs-contentblock-hoverlink
+foundIncontentTitle = lastItem.find(attrs={"class":titleP});
+    </programlisting>
+    <para>就可以一次性匹配，a-incontent a-title，a-incontent a-title cs-contentblock-hoverlink，以及未来更多可能的a-incontent a-title xxx了。</para>
+    <para>感叹一句，Beautifulsoup，做的的确很好用，特此感谢作者。</para>
+</sect1>
+
+</chapter>

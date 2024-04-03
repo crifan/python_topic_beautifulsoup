@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding="utf-8"?>
+
+<!DOCTYPE chapter
+[
+
+<!ENTITY % crl_ent PUBLIC "crl.ent" 'http://www.crifan.com/files/res/docbook/entity/crl.ent'>
+%crl_ent;
+
+]>
+
+<chapter
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xl="http://www.w3.org/1999/xlink"
+    
+    xml:id="ch01_beautifulsoup_intro">
+<title>BeautifulSoup简介</title>
+<abstract></abstract>
+<para></para>
+
+<sect1 xml:id="beautifulsoup_intro"><title>BeautifulSoup模块简介</title>
+    <para>Python的BeautifulSoup模块，可以帮助你实现HTML和XML的解析</para>
+    <para>先说一下，一般写网页爬虫，即抓取网页的html源码等内容，然后分析，提取相应的内容。</para>
+    <para>这种分析html内容的工作，如果只是用普通的正则表达式re模块去一点点匹配的话，对于内容简单点的网页分析，还是基本够用。</para>
+    <para>但是对于工作量很大，要分析的内容很繁杂的html，那么用re模块，就会发现无法实现，或很难实现。</para>
+    <para>而使用beautifulsoup模块去帮你实现分析html源码的工作的话，你就会发现，事情变得如此简单，极大地提高了分析html源码的效率。</para>
+    <para>比如我这里的想要<link xl:href="http://www.crifan.com/crifan_released_all/website/python/blogstowordpress/">实现博客搬家</link>之前，想要抓取对应的博客中的内容，就需要先去打开一个URL地址，去解析其中的内容，找到第一个固定链接，然后一点点分析HTML中的内容，抓去下来，导出wordpress所需要的xml文件等。</para>
+    <para>这其中对于HTML的分析，就可以利用BeautifulSoup这个模块了。</para>
+    <para>更多内容参见"Beautiful Soup 中文文档"</para>
+    <para>其中，原先链接：</para>
+    <para><link xl:href="http://www.crummy.com/software/BeautifulSoup/documentation.zh.html" /></para>
+    <para>已失效，最新的可用的地址是：</para>
+    <para><link xl:href="http://www.crummy.com/software/BeautifulSoup/bs3/documentation.zh.html" /></para>
+    <para>想要下载的话，这是BeautifulSoup的官网，其中可以下载到最新的版本：</para>
+    <para><link xl:href="http://www.crummy.com/software/BeautifulSoup/" /></para>
+</sect1>
+
+</chapter>
